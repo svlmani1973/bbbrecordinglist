@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<style>
+table,th,td{
+    border:1px  black;
+    font: small;
+}
+
+
+</style>
+<body>
+   
+           <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+ 
+    <p id="demo">
+
+    </p><p><button onclick="sortTable(4)">Sort by date</button></p>
+    <p><button onclick="sortTable(1)">Sort by Room Id</button></p>
+    <p><button onclick="sortTable(2)">Sort by size</button></p>
+    
+   
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<div>
+    <table class="list" id="listoftable" width=100%>
+        <col style="width:20%">
+	<col style="width:49%">
+    <col style="width:10%">
+    <col style="width:7%">
+    <col style="width:8%">
+    <col style="width:6%">
+        <tr>
+            <th>Date</th>
+            <th>Meeting room</th>
+            <th>size</th>
+            <th>participants</th>
+            <th>Recording Link</th>
+            <th>Delete</th>
+        </tr>
+
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.0.slim.min.js"
+integrity="sha384-7WBfQYubrFpye+dGHEeA3fHaTy/wpTFhxdjxqvK04e4orV3z+X4XC4qOX3qnkVC6"
+ crossorigin="anonymous">
+</script>
+
+<script type="text/javascript" src="./sha12.js"></script>  
+<script type="text/javascript" src="./get_recordings.js"></script>  
+<script>
+
+
+
+vcsalt="yK0SpuaogZZu5ibMwZmSGU0KyotPNweAbPcSUoSs";// Fill Video conference salt.
+vcurl=null;//Fill Video conference url
+apiurl="getRecordings"+vcsalt;
+deleteurl="/bigbluebutton/api/deleteRecordings?recordID="
+if (vcurl==null) {
+    alert("Please fill vcurl & vcsalt variable in line 60");
+    console.log("not entered")
+}
+var checksum;
+checksum=hex_sha1(apiurl);
+apiurl=vcurl+"/bigbluebutton/api/"+"getRecordings?checksum="+checksum;
+
+URL=apiurl;
+ fetch(URL)
+    .then (function(resp){
+        return resp.text();
+    })
+    .then(function(data){
+        let parser=new DOMParser(),xmlDoc=parser.parseFromString(data,'text/xml');
+        display(xmlDoc);
+    })
+
+
+
+</script>
+
+
+</body>
+</html>
