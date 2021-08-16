@@ -5,5 +5,5 @@ Code to display big blue button recording list
 
 Points to note:
 
-Disable CORS in browser to work properly
-you can Moesif in chrome extension to disable cors for your URL
+Disable CORS in browser to work properly. 
+You can use Moesif in chrome extension to disable cors for your URL
