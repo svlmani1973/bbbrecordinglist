@@ -1,4 +1,4 @@
-# recordinglist
+# Display Big blue button recording
 
-Files to display big blue button recording list and meeting info
-#Add video conference url and salt in _vcurl_ and _vcsalt_ before starting in line 60
+Code to display big blue button recording list
+# Add video conference url and salt in _vcurl_ and _vcsalt_ before starting in line 60
